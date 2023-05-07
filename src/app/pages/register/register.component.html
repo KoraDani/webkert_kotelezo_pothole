@@ -1,0 +1,33 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly center" class="centerRegister">
+  <form [formGroup]="regform" (ngSubmit)="registration()" >
+    <mat-card>
+      <mat-card-header fxLayoutAlign="center center">
+        <mat-card-title>Regisztráció</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field>
+          <mat-label>Felhasználónév:</mat-label>
+          <input matInput type="text" name="username" placeholder="Felhasználónév" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email cím:</mat-label>
+          <input matInput type="email" name="email" placeholder="Email cím" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Jelszó:</mat-label>
+          <input matInput type="password" name="pwd1" placeholder="Jelszó" formControlName="pwd1">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Jelszó megerősítése:</mat-label>
+          <input matInput type="password" name="pwd2" placeholder="Jelszó megerősítése" formControlName="pwd2">
+        </mat-form-field>
+        <mat-radio-group fxLayout="row wrap" fxLayoutAlign="center start" formControlName="picture" class="max_width">
+          <mat-radio-button *ngFor="let item of imagerArray" value="{{item}}"><img
+            src="../../assets/profil/{{item}}.png" alt="{{item}}" width="50px"></mat-radio-button>
+        </mat-radio-group>
+        <button mat-raised-button color="accent">Regisztráció</button>
+        <mat-label>{{success}}</mat-label>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

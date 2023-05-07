@@ -1,0 +1,69 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="example-card">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayoutAlign="center">
+          Felhasználói adatok
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-label></mat-label>
+      <mat-label fxLayoutAlign="center"><img src="../../../assets/profil/{{picture}}.png" width="100px"
+                                             alt="{{picture}}"></mat-label>
+      <br>
+      <mat-label>Felhasználónév: {{username}}</mat-label>
+      <br>
+      <mat-label>Email: {{email}}</mat-label><br>
+      <mat-label>Coins: {{coins}}</mat-label>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Felhasználónév módosítása
+      </mat-expansion-panel-header>
+      <form [formGroup]="newUData">
+        <mat-form-field>
+          <mat-label>Felhasználónév:</mat-label>
+          <input matInput type="text" formControlName="username">
+        </mat-form-field>
+        <br>
+        <mat-radio-group fxLayout="row wrap" fxLayoutAlign="center start" formControlName="picture" class="max_width">
+          <mat-radio-button *ngFor="let item of imagerArray" value="{{item}}"><img
+            src="../../assets/profil/{{item}}.png" alt="{{item}}" width="50px"></mat-radio-button>
+        </mat-radio-group>
+        <mat-label>{{success}}</mat-label><br>
+        <button mat-raised-button (click)="updateUserData()" color="primary">Mentés</button>
+      </form>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayoutAlign="center">
+          Jelszó módosítás:
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="resetpwd">
+        <mat-form-field>
+          <mat-label>Új jelszó:</mat-label>
+          <input matInput type="password" formControlName="newpwd1">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Új jelszó megerősítése:</mat-label>
+          <input matInput type="password" formControlName="newpwd2">
+        </mat-form-field>
+        <br>
+      </form>
+      <mat-label>{{success}}</mat-label><br>
+      <button mat-raised-button color="primary" (click)="resetPassword()">Jelszó változtatás</button>
+      <br>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayoutAlign="center">
+          Fiók törlése
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <button mat-raised-button (click)="deleteUser()">FIÓK TÖRLÉSE</button>
+      <br>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+

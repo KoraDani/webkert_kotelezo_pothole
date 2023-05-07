@@ -1,0 +1,75 @@
+<!--<div fxLayout="column wrap" fxLayoutAlign="center center" class="centerLogin">-->
+  <mat-card class="example-card">
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
+      </div>
+
+      <div class=" mat-elevation-z8">
+
+        <mat-table [dataSource]="potList" matSort>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="orszag">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ország</mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="orszag"> {{element.orszag}} </mat-cell>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="varos">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Város</mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="varos"> {{element.varos}}</mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="cim">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Cím</mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="utca"> {{element.utca}} {{element.hazszam}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="karNagysaga">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Kár nagyság</mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="karNagysaga"> {{element.karNagysaga}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="muvelet">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Műveletek</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div fxHide.lt-sm>
+                <button title="delete" mat-icon-button (click)="deletePothole(element.id)" [disabled]="UserLoggedIn()">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button title="fixed" mat-icon-button (click)="fixeHole(element.id, element.userid)" [disabled]="UserLoggedIn()">
+                  <mat-icon>check_circel</mat-icon>
+                </button>
+              </div>
+              <div fxHide.gt-xs fxShow.lt-sm>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button title="delete" mat-icon-button (click)="deletePothole(element.id)"
+                          [disabled]="UserLoggedIn()">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button title="fixed" mat-icon-button (click)="fixeHole(element.id, element.userid)" [disabled]="UserLoggedIn()">
+                    <mat-icon>check_circel</mat-icon>
+                  </button>
+                </mat-menu>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>

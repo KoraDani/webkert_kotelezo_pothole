@@ -1,0 +1,9 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/main" (click)="close()"><mat-icon>house</mat-icon>Fő oldal</a>
+  <a mat-list-item routerLink="/list" (click)="close()"><mat-icon>list</mat-icon>Kátyúk listázása</a>
+  <a mat-list-item routerLink="/pothole" *ngIf="loggedInUser" (click)="close()"><mat-icon>add</mat-icon>Kátyú felvétele</a>
+  <a mat-list-item routerLink="/userdata" *ngIf="loggedInUser" (click)="close()"><mat-icon>person</mat-icon>Felhasználói adatok</a>
+  <a mat-list-item routerLink="/login" *ngIf="!loggedInUser" (click)="close()"><mat-icon>login</mat-icon>Bejelentkezés</a>
+  <a mat-list-item (click)="logout()" *ngIf="loggedInUser" (click)="close()"><mat-icon>logout</mat-icon>Kijelentkezés</a>
+  <a mat-list-item routerLink="/register" *ngIf="!loggedInUser" (click)="close()"><mat-icon>app_registration</mat-icon>Regisztráció</a>
+</mat-nav-list>

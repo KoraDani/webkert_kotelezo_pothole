@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pothole-2022": {
+      "hosting": {
+        "pothole": [
+          "pothole-2022"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pothole-2022"
+  }
+}

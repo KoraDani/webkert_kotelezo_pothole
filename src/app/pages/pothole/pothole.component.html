@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" class="centerPothole">
+  <form [formGroup]="potholeForm" (ngSubmit)="savePothole()" >
+    <mat-card class="example-card">
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field>
+          <mat-label>Ország</mat-label>
+          <input matInput type="text" formControlName="orszag">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Város</mat-label>
+          <input matInput type="text" formControlName="varos">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Utca</mat-label>
+          <input matInput type="text" formControlName="utca">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Házszám</mat-label>
+          <input matInput type="number" formControlName="hazszam">
+        </mat-form-field>
+
+        <mat-radio-group fxLayout="column" fxLayoutAlign="center start" formControlName="karNagysaga">
+          <mat-radio-button value="uuups">uups</mat-radio-button>
+          <mat-radio-button value="2">2</mat-radio-button>
+          <mat-radio-button value="zerge baszta út">zerge baszta út</mat-radio-button>
+          <mat-radio-button value="ez drágának hangzott">ez drágának hangzott</mat-radio-button>
+          <mat-radio-button value="bassza meg">bassza meg</mat-radio-button>
+        </mat-radio-group>
+        <mat-label>{{success}}</mat-label><br>
+        <button mat-raised-button color="primary">Kátyú mentése</button>
+
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>
